@@ -1,0 +1,13 @@
+.cards  {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: fit-content;
+  height: fit-content;
+}
+
+.card img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin: 10px;
+}

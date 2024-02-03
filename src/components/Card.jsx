@@ -1,16 +1,15 @@
 import React, { useState } from "react"
-import "../styles/card.css"
 
-function Card({ url, key, picked }) {
+function Card({ url, picked, onPick, id }) {
   
-  function pickCard(key, picked) {
+  function pickCard(picked) {
     
     
   }
   
   return(
-    <div className="card">
-    <img src={url} onClick={pickCard}/>
+    <div className="card" >
+      <img src={url} onClick={onPick} id={id}/>
     </div>
   )
 }
