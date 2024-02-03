@@ -12,3 +12,5 @@ function Scoreboard(props) {
     </div>
   )
 }
+
+export default Scoreboard

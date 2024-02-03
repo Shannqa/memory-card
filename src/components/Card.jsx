@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-//import "../styles/card.css"
+import "../styles/card.css"
 
 function Card({ url, key, picked }) {
   
@@ -9,8 +9,8 @@ function Card({ url, key, picked }) {
   }
   
   return(
-    <div><p>aa</p>
-    <img src={url} className="card" onClick={pickCard}/>
+    <div className="card">
+    <img src={url} onClick={pickCard}/>
     </div>
   )
 }
