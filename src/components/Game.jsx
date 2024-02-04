@@ -1,12 +1,14 @@
 import { useState } from "react";
 import Scoreboard from "./Scoreboard.jsx";
 import ImageGetter from "./ImageGetter.jsx";
+import ModalLostGame from "./ModalLostGame.jsx";
 
 function Game() {
   const [images, setImages] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [imgCount, setImgCount] = useState(6);
+  const [gameOn, setGameOn] = useState(true);
 
   let currentCount = 0;
   const round = 0;
@@ -50,6 +52,7 @@ function Game() {
   function lostGame() {
     console.log("sorry!");
     setCurrentScore(0);
+    setGameOn(false)
     setImgCount(6);
   }
 
@@ -63,8 +66,9 @@ function Game() {
 
   return(
     <div>
-    <Scoreboard currentScore={currentScore} bestScore={bestScore}/>
-    <ImageGetter imgCount={imgCount} images={images} setImages={setImages} onPick={handlePick}/>
+      <Scoreboard currentScore={currentScore} bestScore={bestScore}/>
+      <ImageGetter imgCount={imgCount} images={images} setImages={setImages} onPick={handlePick} gameOn={gameOn} setGameOn={setGameOn}/>
+      <ModalLostGame />
     </div>
   )
 }
