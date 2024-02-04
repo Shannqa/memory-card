@@ -2,15 +2,15 @@ import { useState } from "react";
 import Scoreboard from "./Scoreboard.jsx";
 import ImageGetter from "./ImageGetter.jsx";
 import ModalLostGame from "./ModalLostGame.jsx";
+import ModalNextRound from "./ModalNextRound.jsx"
 
 function Game() {
   const [images, setImages] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-  const [imgCount, setImgCount] = useState(6);
+  const [imgCount, setImgCount] = useState(3);
   const [fetchSwitch, setFetchSwitch] = useState(true);
-
-  let currentCount = 0;
+  const [turnCount, setTurnCount] = useState(1);
   const round = 0;
   
   function shuffleImages(array) {
@@ -50,24 +50,44 @@ function Game() {
   }  
 
   function lostGame() {
-    const modal = document.querySelector(".modal");
+    const modal = document.querySelector("#modal-lost");
     modal.classList.add("display");
     setCurrentScore(0);
+    setTurnCount(1);
   }
 
   function playAgain() {
-    const modal = document.querySelector(".modal");
+    const modal = document.querySelector("#modal-lost");
     modal.classList.remove("display");
     setFetchSwitch(!fetchSwitch);
-    setImgCount(6);
+    setImgCount(3);
   }
 
   function winTurn() {
     setCurrentScore(currentScore + 1)
-
+    setTurnCount(turnCount + 1)
     if (currentScore >= bestScore) {
       setBestScore(bestScore + 1);
     }
+    console.log("turnCount" + turnCount);
+    console.log("imgCount" + imgCount);
+    if (turnCount === imgCount) {
+      winRound();
+    }
+      
+  }
+
+  function winRound() {
+    const modal = document.querySelector("#modal-round");
+    modal.classList.add("display");
+
+  }
+
+  function startNextRound() {
+    const modal = document.querySelector("#modal-round");
+    modal.classList.remove("display");
+    setTurnCount(1);
+    setImgCount(imgCount + 1);
   }
 
   return(
@@ -75,6 +95,7 @@ function Game() {
       <Scoreboard currentScore={currentScore} bestScore={bestScore}/>
       <ImageGetter imgCount={imgCount} images={images} setImages={setImages} onPick={handlePick} fetchSwitch={fetchSwitch} setFetchSwitch={setFetchSwitch}/>
       <ModalLostGame handler={playAgain}/>
+      <ModalNextRound handler={startNextRound} />
     </div>
   )
 }
