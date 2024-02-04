@@ -1,10 +1,10 @@
-function ModalLostGame() {
+function ModalLostGame({handler}) {
 
   return(
-    <div className="modal-back">
-      <div className="modal">
+    <div className="modal">
+      <div className="modal-content">
         Game over!
-        <button>Play again</button>
+        <button onClick={handler}>Play again</button>
       </div>
     </div>
     

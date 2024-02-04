@@ -8,7 +8,7 @@ function Game() {
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [imgCount, setImgCount] = useState(6);
-  const [gameOn, setGameOn] = useState(true);
+  const [fetchSwitch, setFetchSwitch] = useState(true);
 
   let currentCount = 0;
   const round = 0;
@@ -50,9 +50,15 @@ function Game() {
   }  
 
   function lostGame() {
-    console.log("sorry!");
+    const modal = document.querySelector(".modal");
+    modal.classList.add("display");
     setCurrentScore(0);
-    setGameOn(false)
+  }
+
+  function playAgain() {
+    const modal = document.querySelector(".modal");
+    modal.classList.remove("display");
+    setFetchSwitch(!fetchSwitch);
     setImgCount(6);
   }
 
@@ -67,8 +73,8 @@ function Game() {
   return(
     <div>
       <Scoreboard currentScore={currentScore} bestScore={bestScore}/>
-      <ImageGetter imgCount={imgCount} images={images} setImages={setImages} onPick={handlePick} gameOn={gameOn} setGameOn={setGameOn}/>
-      <ModalLostGame />
+      <ImageGetter imgCount={imgCount} images={images} setImages={setImages} onPick={handlePick} fetchSwitch={fetchSwitch} setFetchSwitch={setFetchSwitch}/>
+      <ModalLostGame handler={playAgain}/>
     </div>
   )
 }

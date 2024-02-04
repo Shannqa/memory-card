@@ -10,9 +10,10 @@
   height: 200px;
   object-fit: cover;
   margin: 10px;
+  cursor: pointer;
 }
 
-.modal-back {
+.modal {
   display: none;
   background-color: rgba(0, 0, 0, 0.8);
   width: 100%;
@@ -23,7 +24,10 @@
   top: 0;
 }
 
-.modal {
+.display {
+  display: block;
+}
+.modal-content {
   width: 200px;
   height: 120px;
   border: 1px black solid;
@@ -41,4 +45,5 @@
   padding: 4px 8px;
   font-weight: bold;
   font-size: 1.3rem;
+  cursor: pointer;
 }

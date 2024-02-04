@@ -5,7 +5,7 @@ import API_KEY from "../../key.js";
 import { v4 as uuidv4 } from "uuid";
 
 
-function ImageGetter({imgCount, images, setImages, onPick, gameOn, setGameOn}) {
+function ImageGetter({imgCount, images, setImages, onPick, fetchSwitch, setFetchSwitch}) {
 
   useEffect(() => {
     fetch(`https://api.thecatapi.com/v1/images/search?size=small&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=${imgCount}&api_key=${API_KEY}`)
@@ -20,9 +20,8 @@ function ImageGetter({imgCount, images, setImages, onPick, gameOn, setGameOn}) {
       });
       
       setImages(imgList);
-      setGameOn(true);
     });
-  }, [imgCount, gameOn]);
+  }, [imgCount, fetchSwitch]);
   
   return(
     <div className="cards">
