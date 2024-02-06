@@ -1,25 +1,8 @@
 .cards  {
-  display: grid;
+  display: none;
   grid-template-columns: repeat(3, 1fr);
   width: fit-content;
   height: fit-content;
-}
-
-.card {
-  animation: memocard 600ms;
-  transition: transform 100ms ease-in-out;
-  background-color: paleviolet;
-}
-
-@keyframes memocard {
-  0% {
-    transform: scale(0);
-    transform: rotate3d(0, 1, 0, 90deg);
-  }
-  100% {
-    transform: scale(1);
-    transform: rotate3d(0, 1, 0, 90deg)
-  }
 }
 
 .card:hover {
@@ -67,4 +50,8 @@
   font-weight: bold;
   font-size: 1.3rem;
   cursor: pointer;
+}
+
+.cards.display {
+  display: grid;
 }

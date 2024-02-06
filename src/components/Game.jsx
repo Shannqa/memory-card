@@ -61,6 +61,8 @@ function Game() {
     modal.classList.remove("display");
     setFetchSwitch(!fetchSwitch);
     setImgCount(3);
+    const cards = document.querySelector(".cards");
+    cards.classList.remove("display");
   }
 
   function winTurn() {
@@ -86,8 +88,11 @@ function Game() {
   function startNextRound() {
     const modal = document.querySelector("#modal-round");
     modal.classList.remove("display");
+    const cards = document.querySelector(".cards");
+    cards.classList.remove("display");
     setTurnCount(1);
     setImgCount(imgCount + 1);
+
   }
 
   return(
