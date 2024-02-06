@@ -3,6 +3,9 @@ import Scoreboard from "./Scoreboard.jsx";
 import ImageGetter from "./ImageGetter.jsx";
 import ModalLostGame from "./ModalLostGame.jsx";
 import ModalNextRound from "./ModalNextRound.jsx"
+import Header from "./Header.jsx";
+import Footer from "./Footer.jsx";
+import "../styles/index.css"
 
 function Game() {
   const [images, setImages] = useState([]);
@@ -97,10 +100,12 @@ function Game() {
 
   return(
     <div>
+      <Header />
       <Scoreboard currentScore={currentScore} bestScore={bestScore}/>
       <ImageGetter imgCount={imgCount} images={images} setImages={setImages} onPick={handlePick} fetchSwitch={fetchSwitch} setFetchSwitch={setFetchSwitch}/>
       <ModalLostGame handler={playAgain}/>
       <ModalNextRound handler={startNextRound} />
+      <Footer />
     </div>
   )
 }
