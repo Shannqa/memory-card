@@ -10,7 +10,8 @@ import "../styles/index.css"
 function Game() {
   const [images, setImages] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
-  const [bestScore, setBestScore] = useState(0);
+  // get best score from local storage
+  const [bestScore, setBestScore] = useState(JSON.parse(localStorage.getItem("bestScore")) || 0);
   const [imgCount, setImgCount] = useState(3);
   const [fetchSwitch, setFetchSwitch] = useState(true);
   const [turnCount, setTurnCount] = useState(1);
@@ -73,6 +74,8 @@ function Game() {
     setTurnCount(turnCount + 1)
     if (currentScore >= bestScore) {
       setBestScore(bestScore + 1);
+      // save best score to the local storage
+      localStorage.setItem("bestScore", JSON.stringify(bestScore));
     }
     console.log("turnCount" + turnCount);
     console.log("imgCount" + imgCount);

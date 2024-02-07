@@ -34,7 +34,7 @@ function ImageGetter({imgCount, images, setImages, onPick, fetchSwitch, setFetch
   
   return(
     <Fragment>
-      {isLoading ? <img src ="./public/assets/ezgif-5-262ccda370.gif" /> : null}
+      {isLoading ? <div><img src ="./public/assets/ezgif-5-262ccda370.gif" /><p>Loading cats...</p></div> : null}
       <div className="cards">
         {images.map((img) => (
           <Card url={img.url} key={img.id} picked={img.picked} onPick={onPick} id={img.id}/>
