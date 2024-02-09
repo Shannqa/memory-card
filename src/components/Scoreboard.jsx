@@ -2,6 +2,10 @@ function Scoreboard(props) {
   return(
     <div className="scoreboard">
       <div>
+        <span>Round:</span>
+        <span>{props.round}</span>
+      </div>
+      <div>
         <span>Current score:</span>
         <span>{props.currentScore}</span>
       </div>

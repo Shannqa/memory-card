@@ -29,7 +29,8 @@ function ImageGetter({imgCount, images, setImages, onPick, fetchSwitch, setFetch
       }, 2000)
       
       // console.log(process.env.API_KEY);
-    });
+    })
+    .catch((error) => console.error(error));
   }, [imgCount, fetchSwitch]);
   
   return(

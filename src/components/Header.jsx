@@ -1,9 +1,12 @@
-function Header() {
+import Scoreboard from "./Scoreboard.jsx";
+
+function Header(props) {
     
   return(
     <div className="header">
       <h1>Memory Game</h1>
       <p>Don't click on the same image twice to earn points!</p>
+      <Scoreboard currentScore={currentScore} bestScore={bestScore} round={round} />
     </div>
   )
 }

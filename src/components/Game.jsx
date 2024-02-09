@@ -15,7 +15,7 @@ function Game() {
   const [imgCount, setImgCount] = useState(3);
   const [fetchSwitch, setFetchSwitch] = useState(true);
   const [turnCount, setTurnCount] = useState(1);
-  const round = 0;
+  const [round, setRound] = useState(1);
   
   function shuffleImages(array) {
     // Fisher-Yates shuffle
@@ -98,13 +98,12 @@ function Game() {
     cards.classList.remove("display");
     setTurnCount(1);
     setImgCount(imgCount + 1);
-
+    setRound(round + 1);
   }
 
   return(
     <div>
-      <Header />
-      <Scoreboard currentScore={currentScore} bestScore={bestScore}/>
+      <Header currentScore={currentScore} bestScore={bestScore} round={round}/>
       <ImageGetter imgCount={imgCount} images={images} setImages={setImages} onPick={handlePick} fetchSwitch={fetchSwitch} setFetchSwitch={setFetchSwitch}/>
       <ModalLostGame handler={playAgain}/>
       <ModalNextRound handler={startNextRound} />
